@@ -1,0 +1,64 @@
+.Statistics {
+    width: 100%;
+
+    .recharts-wrapper {
+        width: 50%;
+        height: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .recharts-surface {
+            width: 100%;
+            float: right;
+        }
+    }
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .colors {
+        .color {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            list-style-type: none;
+            cursor: pointer;
+
+            &:first-child {
+                background-color: #455a64;
+            }
+
+            &:nth-child(2) {
+                background-color: #4b6c81;
+            }
+
+            &:nth-child(3) {
+                background-color: #517e9e;
+            }
+
+            &:nth-child(4) {
+                background-color: #5891bc;
+            }
+
+            &:nth-child(5) {
+                background-color: #5ea3d9;
+            }
+
+            &:last-child {
+                background-color: #64b5f6;
+            }
+        }
+    }
+
+    .values {
+        .value {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    }
+}

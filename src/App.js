@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home/Home";
+import Map from "./pages/Map/Map";
+import Sidebar from "./containers/Sidebar/Sidebar";
+import SettingsPage from "./pages/SettingsPage/SettingsPage";
+import SignIn from "./pages/SignIn/SignIn";
+import Statistics from "./pages/Statistics/Statistics";
+import SignUp from "./pages/SignUp/SignUp";
+
+import "./assets/main.scss";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App container">
+            <Router>
+                <Sidebar />
+
+                <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    <Route path="/map" element={<Map />} />
+                    <Route path="/settings" element={<SettingsPage />} />
+                    <Route path="/signin" element={<SignIn />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/statistics" element={<Statistics />} />
+                </Routes>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
+// https://api-dtp.yhxbb.uz/api/egov/open_data
