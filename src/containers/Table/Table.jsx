@@ -40,7 +40,7 @@ const Table = () => {
             {data.data.map((item, key) => {
                 return (
                     <div>
-                        <Accordion allowZeroExpanded>
+                        {/* <Accordion allowZeroExpanded> */}
                             <TableContent
                                 key={item.id}
                                 regionName={item.district.name_uz}
@@ -53,7 +53,7 @@ const Table = () => {
                                 roadPart={item.road_part.name_uz}
                                 btn="Ko'proq"
                             />
-                        </Accordion>
+                        {/* </Accordion> */}
                     </div>
                 );
             })}

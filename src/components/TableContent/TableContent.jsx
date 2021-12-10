@@ -25,7 +25,7 @@ const TableContent = ({
 }) => {
     return (
         // <div className="TableContent">
-            <Accordion allowZeroExpanded className="TableContent">
+            <div className="TableContent">
                 {/* {items.map((item) => ( */}
                 {/* <AccordionItem>
                     <AccordionItemHeading></AccordionItemHeading>
@@ -33,25 +33,25 @@ const TableContent = ({
                     <AccordionItemButton>Btn</AccordionItemButton>
                 </AccordionItem> */}
                 {/* ))} */}
-            <AccordionItem>
+            <div>
                 <div style={{ width: "190px" }}>
                     <h4 style={{ marginBottom: "10px" }}>{regionName}</h4>
                     <span>{districtName}</span>
                 </div>
-            </AccordionItem>
-            <AccordionItem style={{ width: "15%" }}>
+            </div>
+            <div style={{ width: "15%" }}>
                 <h4 style={{ marginBottom: "10px" }}>{accidentType}</h4>
                 <span>{accidentDate}</span>
-            </AccordionItem>
-            <AccordionItem style={{ display: "flex", flexDirection: "column" }}>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
                 <h4 style={{ marginBottom: "10px" }}>
                     {vehicleBrand} {vehicleModel}
                 </h4>
                 <span>Ranggi: {vehicleColor}</span>
-            </AccordionItem>
+            </div>
             <h4 style={{ width: "100px" }}>{roadPart}</h4>
             <AccordionItemButton>{btn}</AccordionItemButton>
-            </Accordion>
+            </div>
         // </div>
     );
 };
