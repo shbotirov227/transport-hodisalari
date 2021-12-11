@@ -11,6 +11,8 @@
 # production
 /build
 
+# --openssl-legacy-provider 
+
 # misc
 .DS_Store
 .env.local

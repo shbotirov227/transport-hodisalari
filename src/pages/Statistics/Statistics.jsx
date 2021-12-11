@@ -19,7 +19,7 @@ let renderLabel = function (entry) {
     return entry.name;
 };
 
-const COLORS = [
+const COLORS = [ 
     "#455A64",
     "#4B6C81",
     "#517E9E",
@@ -71,7 +71,7 @@ const Statistics = () => {
         })
         console.log(arr);
         arr.filter((element) => {
-            console.log(element);
+            console.log(element); 
         })
 
 
