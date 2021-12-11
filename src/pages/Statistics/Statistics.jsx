@@ -35,6 +35,7 @@ const Statistics = () => {
         error: null,
     });
 
+    
     useEffect(() => {
         axios.get("/open_data/")
             .then((res) => {
