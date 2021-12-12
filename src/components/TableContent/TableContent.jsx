@@ -39,17 +39,17 @@ const TableContent = ({
                     <span>{districtName}</span>
                 </div>
             </div>
-            <div style={{ width: "15%" }}>
+            <div style={{ width: "190px" }}>
                 <h4 style={{ marginBottom: "10px" }}>{accidentType}</h4>
                 <span>{accidentDate}</span>
             </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", flexDirection: "column", width: "150px"}}>
                 <h4 style={{ marginBottom: "10px" }}>
                     {vehicleBrand} {vehicleModel}
                 </h4>
                 <span>Ranggi: {vehicleColor}</span>
             </div>
-            <h4 style={{ width: "100px" }}>{roadPart}</h4>
+            <h4 style={{ width: "200px" }}>{roadPart}</h4>
             <AccordionItemButton>{btn}</AccordionItemButton>
             </div>
         // </div>
