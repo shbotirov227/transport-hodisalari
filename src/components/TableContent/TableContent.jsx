@@ -1,16 +1,6 @@
 import React from "react";
 import "./TableContent.scss";
 
-import {
-    Accordion,
-    AccordionItem,
-    AccordionItemHeading,
-    AccordionItemButton,
-    AccordionItemPanel,
-} from "react-accessible-accordion";
-
-import "react-accessible-accordion/dist/fancy-example.css";
-
 
 const TableContent = ({
     regionName,
@@ -50,7 +40,6 @@ const TableContent = ({
                 <span>Ranggi: {vehicleColor}</span>
             </div>
             <h4 style={{ width: "200px" }}>{roadPart}</h4>
-            <AccordionItemButton>{btn}</AccordionItemButton>
             </div>
         // </div>
     );

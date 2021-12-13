@@ -22,21 +22,21 @@ const Sidebar = () => {
             </Link>
 
             <Link to="/">
-                <SidebarBtn title="Home" icon={<HomeIcon />} />
+                <SidebarBtn title="Asosiy" icon={<HomeIcon />} />
             </Link>
 
             <Link to="/map">
-                <SidebarBtn title="Map" icon={<MapIcon />} />
+                <SidebarBtn title="Xarita" icon={<MapIcon />} />
             </Link>
             <Link to="/settings">
-                <SidebarBtn title="Settings" icon={<SettingBtnIcon />} />
+                <SidebarBtn title="Sozlamalar" icon={<SettingBtnIcon />} />
             </Link>
             <Link to="/signin">
                 <SidebarBtn title="Sign In" icon={<SignInIcon />} />
             </Link>
 
             <Link to="/statistics">
-                <SidebarBtn title="Statistics" icon={<StatisticsIcon />} />
+                <SidebarBtn title="Statistika" icon={<StatisticsIcon />} />
             </Link>
         </div>
     );

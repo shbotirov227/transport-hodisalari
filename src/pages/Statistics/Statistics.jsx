@@ -1,4 +1,4 @@
-import React, { PureComponent, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import axios from "../../utils/api";
 
@@ -54,6 +54,7 @@ const Statistics = () => {
                 });
             });
         }, [setData]);
+        console.log(data);
         
         // let arr = [];
  
@@ -66,14 +67,14 @@ const Statistics = () => {
 
         // console.log(nmadir)
 
-        let arr = [];
-        data.data.map( (item) => {
-            arr.push(item.district.name_uz)
-        })
-        console.log(arr);
-        arr.filter((element) => {
-            console.log(element); 
-        })
+        // let arr = [];
+        // data.data.map( (item) => {
+        //     arr.push(item.district.name_uz)
+        // })
+        // console.log(arr);
+        // arr.filter((element) => {
+        //     console.log(element); 
+        // })
 
 
     return (
@@ -91,7 +92,7 @@ const Statistics = () => {
                         cx="50%"
                         cy="50%"
                     >
-                        {arr.map((entry, index) => (
+                        {dataCity.map((entry, index) => (
                                 <Cell
                                     key={`cell-${index}`}
                                     fill={COLORS[index % COLORS.length]}
