@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Header from "../../containers/Header/Header";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import axios from "../../utils/api";
-
+import Header from "../../containers/Header/Header";
 import "./Map.scss";
 
 const containerStyle = {
@@ -13,6 +12,18 @@ const containerStyle = {
 const Map = () => {
     const [places, setPlaces] = useState({ lat: 40.0114, lng: 67.6014 });
 
+    useEffect(() => {
+        axios.get('/open_data/')
+        .then(res => {
+            res.data.results.map(item => {
+                let location = item.location.split(',');
+                setPlaces({ lat: location[0], lng: location[1] });
+            })
+        }).catch(err => err)
+    }, []);
+    
+    console.log(places);
+
     return (
         <div className="Map">
             <LoadScript googleMapsApiKey="AIzaSyBLLkCb1FPXWHHHgdlrv5VEPRnVOfrhz3o">
@@ -20,14 +31,12 @@ const Map = () => {
                 <GoogleMap
                     mapContainerStyle={containerStyle}
                     center={places}
-                    places={places}
                     zoom={10}
                 ></GoogleMap>
 
                 <Marker
                     center={places}
-                    key="marker_1"
-                    position={places}
+                    position={places} n
                     onClick={() => console.log("You clicked me!")}
                 />
             </LoadScript>
