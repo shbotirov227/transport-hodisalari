@@ -36,7 +36,6 @@ const Map = () => {
                     <Marker
                         position={places}
                         onClick={() => console.log("You clicked me!")}
-                        visible={true}
                     />
                 </GoogleMap>
             </LoadScript>

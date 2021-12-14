@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import axios from "../../utils/api";
-
 import Header from "../../containers/Header/Header";
 
 import "./Statistics.scss";
@@ -19,36 +18,39 @@ let renderLabel = function (entry) {
     return entry.name;
 };
 
-// const COLORS = [
-//     "#455A64",
-//     "#4B6C81",
-//     "#517E9E",
-//     "#5891BC",
-//     "#5EA3D9",
-//     "#64B5F6",
-// ];
+const COLORS = [
+    "#455A64",
+    "#4B6C81",
+    "#517E9E",
+    "#5891BC",
+    "#5EA3D9",
+    "#64B5F6",
+];
 
 const Statistics = () => {
-    const [data, setData] = useState({ name: null, value: null });
+    const [ data, setData ] = useState([{}]);
 
     useEffect(() => {
         axios.get("/open_data/")
             .then((res) => {
-                console.log(res.data.results);
                 res.data.results.map((el, index) => {
-                    
-                    setData({
-                        name: el.district.name_uz,
-                        value: el.district.id,
-                    });
-                })
+                    const getAllData = { name: el.district.name_uz, value: el.district.id }
+                    data.push(getAllData);
+                    setData(getAllData);
+                });
+
+                data.reduce((acc, item) => {
+                    console.log(acc)
+                    return { ...acc, [item.name]: (acc[item.name] || 0 ) + 1 }
+                }, {});
+
+                // console.log(resultdata)
+                // console.log(data)
             })
             .catch((err) => {
                 return err;
             });
-    }, []);
-    
-    console.log(data);
+    });
 
     return (
         <div className="Statistics">
