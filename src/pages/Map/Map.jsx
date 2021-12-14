@@ -10,14 +10,15 @@ const containerStyle = {
 };
 
 const Map = () => {
-    const [places, setPlaces] = useState({ lat: 40.0114, lng: 67.6014 });
+    const [places, setPlaces] = useState({ lat: 0, lng: 0 });
 
     useEffect(() => {
         axios.get('/open_data/')
         .then(res => {
-            res.data.results.map(item => {
+            res.data.results.map((item) => {
                 let location = item.location.split(',');
-                setPlaces({ lat: location[0], lng: location[1] });
+                setPlaces({ lat: +location[0], lng: +location[1] });
+                return +location;
             })
         }).catch(err => err)
     }, []);
@@ -27,18 +28,19 @@ const Map = () => {
     return (
         <div className="Map">
             <LoadScript googleMapsApiKey="AIzaSyBLLkCb1FPXWHHHgdlrv5VEPRnVOfrhz3o">
-                <Header title="Map" />
+                <Header title="Xarita" />
                 <GoogleMap
                     mapContainerStyle={containerStyle}
                     center={places}
-                    zoom={10}
-                ></GoogleMap>
-
+                    zoom={8}
+                >
                 <Marker
-                    center={places}
-                    position={places} n
+                    center={places.lng}
+                    position={places}
                     onClick={() => console.log("You clicked me!")}
                 />
+                </GoogleMap>
+
             </LoadScript>
         </div>
     );
@@ -47,6 +49,6 @@ export default Map;
 
 // 22a61631-109c-4315-988a-adcdc39d14fb =====> api-key-yandex-map
 
-// AIzaSyCliwg3 - Nq1Q_L9GFgg131MKkse_A4Lvyg =====> api-key-google-maps-api
+// AIzaSyCliwg3-Nq1Q_L9GFgg131MKkse_A4Lvyg =====> api-key-google-maps-api
 
-// AIzaSyCliwg3 - Nq1Q_L9GFgg131MKkse_A4Lvyg
+// AIzaSyCliwg3-Nq1Q_L9GFgg131MKkse_A4Lvyg
