@@ -10,20 +10,19 @@ const containerStyle = {
 };
 
 const Map = () => {
-    const [places, setPlaces] = useState({ lat: 0, lng: 0 });
+    const [places, setPlaces] = useState({lat: null, lng: null});
 
     useEffect(() => {
-        axios.get('/open_data/')
-        .then(res => {
-            res.data.results.map((item) => {
-                let location = item.location.split(',');
-                setPlaces({ lat: +location[0], lng: +location[1] });
-                return +location;
+        axios
+            .get("/open_data/")
+            .then((res) => {
+                res.data.results.map((item) => {
+                    let location = item.location.split(",");
+                    setPlaces({ lat: +location[0], lng: +location[1] });
+                });
             })
-        }).catch(err => err)
+            .catch((err) => err);
     }, []);
-    
-    console.log(places);
 
     return (
         <div className="Map">
@@ -34,17 +33,17 @@ const Map = () => {
                     center={places}
                     zoom={8}
                 >
-                <Marker
-                    center={places.lng}
-                    position={places}
-                    onClick={() => console.log("You clicked me!")}
-                />
+                    <Marker
+                        position={places}
+                        onClick={() => console.log("You clicked me!")}
+                        visible={true}
+                    />
                 </GoogleMap>
-
             </LoadScript>
         </div>
     );
 };
+
 export default Map;
 
 // 22a61631-109c-4315-988a-adcdc39d14fb =====> api-key-yandex-map
