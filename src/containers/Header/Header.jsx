@@ -20,7 +20,7 @@ const Header = ({ title }) => {
                 <input
                     className="Header-input"
                     type="text"
-                    placeholder="Type here..."
+                    placeholder=" Qidirish..."
                 />
 
                 <Link className="Header-btn" to="/signin">

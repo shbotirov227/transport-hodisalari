@@ -46,7 +46,7 @@ const Table = () => {
 
     return (
         <div className="Table">
-            <h3 className="Table-title">Table</h3>
+            {/* <h3 className="Table-title">Table</h3> */}
             <div className="Table-status"></div>
 
             {data.data.map((item, key) => {
@@ -63,6 +63,7 @@ const Table = () => {
                         >
                             <Typography sx={{ width: "100%", flexShrink: 0 }}>
                                 <TableContent
+                                    style={{ border: 'none' }}
                                     key={item.id}
                                     regionName={item.district.name_uz}
                                     districtName={item.region.name_uz}

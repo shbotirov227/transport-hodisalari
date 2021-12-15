@@ -12,7 +12,8 @@ const SignIn = () => {
     return (
         <div className="SignIn">
             <Header title="Sign In" />
-            <form
+            <h1>Sign in</h1>
+            {/* <form
                 onSubmit={(e) => e.preventDefault()}
                 style={{
                     display: "flex",
@@ -48,7 +49,7 @@ const SignIn = () => {
                     <button className="btnElement">Submit</button>
                     <Link to="/signup">Sign Up</Link>
                 </div>
-            </form>
+            </form> */}
         </div>
     );
 };

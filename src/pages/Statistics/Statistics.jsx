@@ -14,6 +14,16 @@ import "./Statistics.scss";
 //     { name: "Shahrisabz", value: 1300 },
 // ];
 
+
+// const results = (data) => {
+//     Object.keys(data).reduce((result, key) => {
+//         (!~result.indexOf(data[key].name)) &&
+//             result.push(data[key].name);
+//         return result
+//     }, [])
+// }
+
+
 let renderLabel = function (entry) {
     return entry.name;
 };
@@ -28,33 +38,24 @@ const COLORS = [
 ];
 
 const Statistics = () => {
-    const [ data, setData ] = useState([{}]);
+    const [ data, setData ] = useState([]);
 
     useEffect(() => {
         axios.get("/open_data/")
             .then((res) => {
                 res.data.results.map((el, index) => {
-                    const getAllData = { name: el.district.name_uz, value: el.district.id }
-                    data.push(getAllData);
-                    setData(getAllData);
+                    data.push({ name: el.district.name_uz, value: null });
+                    // setData(getAllData);
                 });
-
-                data.reduce((acc, item) => {
-                    console.log(acc)
-                    return { ...acc, [item.name]: (acc[item.name] || 0 ) + 1 }
-                }, {});
-
-                // console.log(resultdata)
-                // console.log(data)
             })
             .catch((err) => {
                 return err;
             });
-    });
+    }, [data]);
 
     return (
         <div className="Statistics">
-            <Header title="Statistics" />
+            <Header title="Statistika" />
             <div className="content">
                 <PieChart width={600} height={500}>
                     <Pie
@@ -67,12 +68,12 @@ const Statistics = () => {
                         cx="50%"
                         cy="50%"
                     >
-                        {/* {data.map((entry, index) => {
+                        {data.map((entry, index) => {
                             <Cell
                                 key={`cell-${index}`}
                                 fill={COLORS[index % COLORS.length]}
                             />;
-                        })} */}
+                        })}
                     </Pie>
                     <Tooltip />
                 </PieChart>
