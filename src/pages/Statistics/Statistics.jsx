@@ -43,15 +43,25 @@ const Statistics = () => {
     useEffect(() => {
         axios.get("/open_data/")
             .then((res) => {
+                // res.data.results.map((el, index) => {
+                //     let getAllData = { name: el.district.name_uz, value: null };
+                //     data.push(getAllData);
+                //     // setData(getAllData);
+                // });
+
                 res.data.results.map((el, index) => {
-                    data.push({ name: el.district.name_uz, value: null });
-                    // setData(getAllData);
-                });
+                    let getData = { name: el.district.name_uz, value: null }
+                    setData(getData)
+                    data.push(getData)
+                    console.log(data)
+                })
             })
             .catch((err) => {
                 return err;
             });
-    }, [data]);
+    }, []);
+
+    console.log(data)
 
     return (
         <div className="Statistics">
