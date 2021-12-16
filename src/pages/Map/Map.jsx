@@ -19,6 +19,7 @@ const Map = () => {
                 res.data.results.map((item) => {
                     let location = item.location.split(",");
                     setPlaces({ lat: +location[0], lng: +location[1] });
+                    return ''
                 });
             })
             .catch((err) => err);
