@@ -19,77 +19,52 @@ let renderLabel = function (entry) {
 const Statistics = () => {
     const [state, setState] = useState([]);
     const arr = [];
+
     useEffect(() => {
-        axios
-            .get("/open_data/")
+        axios.get("/open_data/")
             .then((res) => {
                 res.data.results.map((el) => {
-                    let data = {
-                        name: el.district.name_uz,
-                        value: 12,
-                    };
+                    let data = { name: el.district.name_uz, value: el.district.id };
                     arr.push(data);
                 });
-                let filteredData = arr.filter( 
-                    (v, i, a) => {
-                        console.log();
-                        return (
-                            a.findIndex(
-                                (t) => t.place === v.place && t.name === v.name
-                            ) === i
-                        );
-                    }
-                );
-                
+                let filteredData = arr.filter((v, i, a) => (a.findIndex((t) => t.place === v.place && t.name === v.name) === i));
                 setState(filteredData);
-                console.log(state)
             })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
-
-    // console.log(arr);
-
-    // const findDups = (arr) => {
-    //     const dups = [];
-    //     let index = '';
-    //     for (let i = 0; i < arr.length; i++) {
-    //         // index = Math.abs(arr[i]) - 1;
-
-    //         if (arr[index] < 0) {
-    //             dups.push(index + 1);
-    //         } else {
-    //             arr[index] *= -1;
-    //         }
-    //     }
-    //     return dups;
-    // };
+            .catch(err => err);
+        }, []);
 
     return (
-        <div className="content">
-            <PieChart width={800} height={600}>
-                <Pie
-                    data={state}
-                    dataKey="value"
-                    outerRadius={150}
-                    fill="#4fd1c0"
-                    isAnimationActive={true}
-                    label={renderLabel}
-                    cx="50%"
-                    cy="50%"
-                >
-                    {state.map((item, index) => {
-                        <Cell
-                            key={`cell-${index}`}
-                            fill={COLORS[index % COLORS.length]}
-                        />;
-                    })}
-                </Pie>
-                <Tooltip />
-            </PieChart>
+        <div className="Statistics">
+            <div className="content">
+                <PieChart width={700} height={600}>
+                    <Pie
+                        data={state}
+                        dataKey="value"
+                        outerRadius={180}
+                        fill="#4fd1c0"
+                        isAnimationActive={true}
+                        label={renderLabel}
+                        cx="50%"
+                        cy="50%"
+                    >
+                        {state.map((item, index) => {
+                            <Cell
+                                key={`cell-${index}`}
+                                fill={COLORS[index % COLORS.length]}
+                            />;
+                        })}
+                    </Pie>
+                    {/* <Tooltip /> */}
+                </PieChart>
 
-            <div>{}</div>
+                <div>
+                    {
+                        state.map(item => {
+                            return <h3 className="Statistics-name">{item.name}</h3>
+                        })
+                    }
+                </div>
+            </div>
         </div>
     );
 };
