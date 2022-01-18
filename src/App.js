@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from 'react';
 
 import Home from "./pages/Home/Home";
 import Map from "./pages/Map/Map";
@@ -13,18 +14,20 @@ import "./assets/main.scss";
 function App() {
     return (
         <div className="App container">
-            <Router>
-                <Sidebar />
+            <React.Fragment>
+                <Router>
+                    <Sidebar />
 
-                <Routes>
-                    <Route exact path="/" element={<Home />} />
-                    <Route path="/map" element={<Map />} />
-                    <Route path="/settings" element={<SettingsPage />} />
-                    <Route path="/signin" element={<SignIn />} />
-                    <Route path="/signup" element={<SignUp />} />
-                    <Route path="/statistics" element={<Statistics />} />
-                </Routes>
-            </Router>
+                    <Routes>
+                        <Route exact path="/" element={<Home />} />
+                        <Route path="/map" element={<Map />} />
+                        <Route path="/settings" element={<SettingsPage />} />
+                        <Route path="/signin" element={<SignIn />} />
+                        <Route path="/signup" element={<SignUp />} />
+                        <Route path="/statistics" element={<Statistics />} />
+                    </Routes>
+                </Router>
+            </React.Fragment>
         </div>
     );
 }

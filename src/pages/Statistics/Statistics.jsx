@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Tooltip, PieChart, Pie, Cell } from "recharts";
+import { PieChart, Pie, Cell } from "recharts";
 import axios from "../../utils/api";
 import "./Statistics.scss";
 
@@ -29,10 +29,10 @@ const Statistics = () => {
                 });
                 let filteredData = arr.filter((v, i, a) => (a.findIndex((t) => t.place === v.place && t.name === v.name) === i));
                 setState(filteredData);
+                console.log(state)
             })
             .catch(err => err);
         }, []);
-
     return (
         <div className="Statistics">
             <div className="content">
